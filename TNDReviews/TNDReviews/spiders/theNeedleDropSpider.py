@@ -6,10 +6,9 @@ by Anthony Drake
 import json
 import scrapy
 from scrapy.spiders import Spider
-from ..items import TndreviewsItem
+from ..items import TheneedledropItem
 
-
-class TheNeedleDropSpider(Spider):
+class needledropspider(Spider):
     name = 'theneedledrop'
     start_urls = ['https://www.theneedledrop.com/articles?category=Reviews']
 
@@ -28,15 +27,20 @@ class TheNeedleDropSpider(Spider):
 
         script = response.xpath('//script[@type="application/ld+json"]/text()')[2].get()
         desc = json.loads(script)
-        items = TndreviewsItem()
+        items = TheneedledropItem()
         items['url'] = desc['url']
         items['date'] = desc['datePublished']
         try:
             items['artist'] = desc['headline'].split('-')[0].strip()
             items['album'] = desc['headline'].split('-')[1].strip()
-        except:
-            ValueError
         finally:
             items['name'] = desc['headline']
-        items['score'] = response.xpath('//a[contains(text(),"/")]/text()').get()
+
+        try:
+        	items['score'] = response.xpath('//a[contains(text(),"/")]/text()').get().split('/')[0]
+        except:
+        	items['score'] = "N/A"
+
+
+        items['tags'] = " | ".join(response.xpath('//*[@class="entry-tags"]/a/text()').getall())
         yield items
