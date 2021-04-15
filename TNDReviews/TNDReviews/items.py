@@ -6,7 +6,7 @@
 import scrapy
 
 
-class TndreviewsItem(scrapy.Item):
+class TheneedledropItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
     date = scrapy.Field()
@@ -14,4 +14,5 @@ class TndreviewsItem(scrapy.Item):
     artist = scrapy.Field()
     album = scrapy.Field()
     score = scrapy.Field()
+    tags = scrapy.Field()
     pass
