@@ -5,7 +5,7 @@ A spider that aggregates data from theneedledrop.com, Anthony Fantano's website.
 I would like to perform a scrape of Fantano's YouTube channel and merge that dataset with my current one, as there were a lot of missing values from scores in his older reviews that were present in his YouTube reviews. 
 
 # Update
-Well I just did an EDA of the dataset and found some neat insights. You should check it out!
+Well I just did an EDA of the dataset and found some neat insights. You should check it out! https://the-needle-drop-data.herokuapp.com
 
 # Author
 Anthony Drake (https://www.linkedin.com/in/anthonyedrake/)
